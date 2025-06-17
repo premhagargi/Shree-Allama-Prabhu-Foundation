@@ -20,14 +20,14 @@ function PreviewCard({ item, type }: { item: NewsItem | EventItem; type: 'news' 
     <Card className="h-full flex flex-col"> {/* Removed shadow-md hover:shadow-lg */}
       <Link href={newsPageLink} className="block h-full flex flex-col">
         <div className="relative w-full h-40">
-          <Image
-            src={item.imageUrl}
-            alt={item.title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-none" // Removed rounded-t-lg
-            data-ai-hint={item.dataAiHint}
-          />
+        <Image
+    src={item.imageUrl}
+    alt={item.title}
+    fill
+    style={{ objectFit: 'cover' }}
+    className="rounded-none"
+    data-ai-hint={item.dataAiHint}
+  />
         </div>
         <CardHeader className="pb-2">
           <CardTitle className="font-headline text-lg text-primary line-clamp-2">{item.title}</CardTitle>

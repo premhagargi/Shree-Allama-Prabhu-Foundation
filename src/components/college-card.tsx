@@ -15,15 +15,15 @@ export default function CollegeCard({ college }: CollegeCardProps) {
       className="group relative overflow-hidden flex flex-col justify-end text-white flex-1"
       aria-label={`Learn more about ${college.name}`}
     >
-      <Image
-        src={college.imageUrl}
-        alt={`Image of ${college.name}`}
-        layout="fill"
-        objectFit="cover"
-        className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-105 -z-10"
-        data-ai-hint={college.dataAiHint}
-        priority 
-      />
+ <Image
+    src={college.imageUrl}
+    alt={`Image of ${college.name}`}
+    fill
+    style={{ objectFit: 'cover' }}
+    className="transition-transform duration-500 ease-in-out group-hover:scale-105"
+    data-ai-hint={college.dataAiHint}
+    priority
+  />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent -z-10" />
 
       <div className="relative p-6 md:p-8 lg:p-10 z-10 mr-auto text-left w-full"> {/* Ensure content takes width, text-left applied */}
