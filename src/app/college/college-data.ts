@@ -30,7 +30,7 @@ export const colleges: College[] = [
     shortName: "SAPEC",
     tagline: "Engineering Excellence, Future Forward.",
     description: "A premier institution dedicated to excellence in engineering and technology education, fostering innovation and research across various disciplines.",
-    imageUrl: "https://placehold.co/1200x800", 
+    imageUrl: "https://placehold.co/500x1000", 
     dataAiHint: "modern university architecture",
     logoUrl: "https://placehold.co/200x200",
     contact: {
@@ -61,7 +61,7 @@ export const colleges: College[] = [
     shortName: "SAPASC",
     tagline: "Nurturing Minds, Inspiring Futures.",
     description: "A vibrant center for learning in arts, humanities, and sciences, promoting critical thinking, creativity, and holistic student development.",
-    imageUrl: "https://placehold.co/1200x800",
+    imageUrl: "https://placehold.co/500x1000",
     dataAiHint: "university library students",
     logoUrl: "https://placehold.co/200x200",
     contact: {
@@ -91,7 +91,7 @@ export const colleges: College[] = [
     shortName: "SAPMI",
     tagline: "Healing Hands, Compassionate Hearts.",
     description: "A leading medical institute committed to producing skilled and ethical healthcare professionals and advancing medical research for a healthier society.",
-    imageUrl: "https://placehold.co/1200x800",
+    imageUrl: "https://placehold.co/500x1000",
     dataAiHint: "medical professionals team",
     logoUrl: "https://placehold.co/200x200",
     contact: {
