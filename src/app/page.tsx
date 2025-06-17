@@ -1,5 +1,5 @@
 
-'use client'; // Required for useState and useEffect
+'use client'; 
 
 import React, { useState, useEffect } from 'react';
 import CollegeCard from '@/components/college-card';
@@ -13,7 +13,7 @@ export default function HomePage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeroContent(false);
-    }, 3000); // Content starts fading/changing after 3 seconds
+    }, 3000); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -21,11 +21,11 @@ export default function HomePage() {
   return (
     <div className="bg-background">
       {/* Animated Hero / College Cards Section */}
-      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-primary to-blue-700 text-primary-foreground overflow-hidden">
+      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-primary to-yellow-600 text-primary-foreground overflow-hidden">
         {/* Hero Text Content - Fades Out */}
         <div
           className={`absolute inset-0 flex flex-col items-center justify-center text-center p-4 transition-all duration-1000 ease-in-out ${
-            showHeroContent ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95 pointer-events-none'
+            showHeroContent ? 'opacity-100 z-10 scale-100' : 'opacity-0 -z-10 scale-95 pointer-events-none'
           }`}
         >
           <Landmark className="h-24 w-24 mx-auto mb-6 text-accent" />
@@ -47,10 +47,9 @@ export default function HomePage() {
         {/* College Cards Stack - Fades In */}
         <div
           className={`flex-grow flex flex-col w-full transition-all duration-1000 ease-in-out ${
-            !showHeroContent ? 'opacity-100 scale-100 delay-700' : 'opacity-0 scale-105 pointer-events-none'
+            !showHeroContent ? 'opacity-100 scale-100 z-20 delay-700' : 'opacity-0 scale-100 -z-10 pointer-events-none'
           }`}
         >
-          {/* Always render cards for flexbox calculations, visibility controlled by opacity and pointer-events */}
           {colleges.map((college) => (
             <CollegeCard key={college.id} college={college} />
           ))}
