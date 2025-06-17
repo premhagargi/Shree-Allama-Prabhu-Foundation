@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'Shree Allama Prabhu Foundation',
       images: [
         {
-          url: college.imageUrl,
-          width: 1200, // Standard OG image width
-          height: 630, // Standard OG image height
+          url: college.imageUrl, // This URL comes from college-data.ts and should be placehold.co
+          width: 1200,
+          height: 630,
           alt: `Campus of ${college.name}`,
         },
       ],
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title,
       description,
-      images: [college.imageUrl],
+      images: [college.imageUrl], // This URL comes from college-data.ts
       // site: '@YourFoundationTwitterHandle', // Optional: Add Twitter handle
     },
   };
@@ -78,7 +78,7 @@ export default function CollegePage({ params }: Props) {
     "name": college.name,
     "alternateName": college.shortName,
     "url": `https://shreeallamaprabhufoundation.org/college/${college.id}`, // Replace with actual domain
-    "logo": college.logoUrl || `https://shreeallamaprabhufoundation.org/logos/${college.id}-logo.png`, // Replace with actual logo URL
+    "logo": college.logoUrl || `https://placehold.co/200x200.png`, // Fallback to a placeholder
     "description": college.description,
     "image": college.imageUrl,
     "address": {
@@ -147,7 +147,7 @@ export default function CollegePage({ params }: Props) {
                     width={88} // Slightly larger logo
                     height={88}
                     className="mr-4 rounded-md bg-white p-1.5 shadow-md" // Increased padding
-                    data-ai-hint="college logo"
+                    data-ai-hint="college logo" // Added data-ai-hint
                 />
                 )}
                 <div>

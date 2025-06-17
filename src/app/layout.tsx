@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     siteName: 'Shree Allama Prabhu Foundation',
     images: [
       {
-        url: 'https://shreeallamaprabhufoundation.org/og-image.png', // Replace with your actual OG image URL
+        url: 'https://placehold.co/1200x630.png', // Updated to placehold.co
         width: 1200,
         height: 630,
-        alt: 'Shree Allama Prabhu Foundation Logo and Campus Snippet',
+        alt: 'Shree Allama Prabhu Foundation Social Preview',
       },
     ],
     locale: 'en_US',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Shree Allama Prabhu Foundation',
     description: 'Empowering communities through education and service. Discover our colleges, news, events, and initiatives.',
-    images: ['https://shreeallamaprabhufoundation.org/twitter-image.png'], // Replace with your actual Twitter image URL
+    images: ['https://placehold.co/1200x630.png'], // Updated to placehold.co
     // site: '@YourTwitterHandle', // Optional: Add your Twitter handle
   },
   robots: {
@@ -67,7 +67,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased flex flex-col min-h-screen bg-background text-foreground">
         <Header />
-        <main className="flex-grow"> {/* Removed style={{paddingTop: 'var(--header-height, 5rem)'}} */}
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
