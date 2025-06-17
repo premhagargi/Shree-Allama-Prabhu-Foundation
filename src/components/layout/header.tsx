@@ -25,7 +25,7 @@ export default function Header() {
                 height={40}
                 className="w-10 h-10"
               /> */}
-              <span className="font-headline text-2xl text-black">
+              <span className="font-headline text-2xl font-extrabold text-black">
                 Shree Allama Prabhu Foundation
               </span>
             </Link>
