@@ -29,7 +29,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 0rem; /* Changed from 0.5rem */
 
     /* Sidebar theme adjustments (if using a dedicated sidebar component) */
     --sidebar-background: 0 0% 98%; /* Off-white */
@@ -102,12 +102,6 @@
 }
 
 @layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;

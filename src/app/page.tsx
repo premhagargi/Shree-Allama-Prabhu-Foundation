@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CollegeCard from '@/components/college-card';
 import { colleges } from '@/app/college/college-data';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ import { CalendarDays } from 'lucide-react';
 function PreviewCard({ item, type }: { item: NewsItem | EventItem; type: 'news' | 'event' }) {
   const newsPageLink = `/news-events#${type === 'news' ? 'news-item' : 'event-item'}-${item.id}`;
   return (
-    <Card className="shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+    <Card className="h-full flex flex-col"> {/* Removed shadow-md hover:shadow-lg */}
       <Link href={newsPageLink} className="block h-full flex flex-col">
         <div className="relative w-full h-40">
           <Image
@@ -25,7 +25,7 @@ function PreviewCard({ item, type }: { item: NewsItem | EventItem; type: 'news' 
             alt={item.title}
             layout="fill"
             objectFit="cover"
-            className="rounded-t-lg"
+            className="rounded-none" // Removed rounded-t-lg
             data-ai-hint={item.dataAiHint}
           />
         </div>
@@ -58,8 +58,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-background">
-      {/* Side-by-side College Sections - Full Viewport Height */}
-      <section className="flex flex-col md:flex-row h-screen"> {/* Changed from h-[calc(100vh-var(--header-height,5rem))] to h-screen */}
+      {/* College Sections - Full Viewport Height */}
+      <section className="flex flex-col md:flex-row h-screen">
         {colleges.map((college) => (
           <CollegeCard key={college.id} college={college} />
         ))}
@@ -77,17 +77,17 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="p-8 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="p-8 bg-card rounded-none"> {/* Removed rounded-lg shadow-lg hover:shadow-xl */}
               <BookOpen className="h-16 w-16 mx-auto mb-6 text-accent" />
               <h3 className="font-headline text-2xl font-semibold mb-3 text-primary">Quality Education</h3>
               <p className="text-base text-muted-foreground">Providing comprehensive learning experiences across diverse disciplines to foster intellectual growth.</p>
             </div>
-            <div className="p-8 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="p-8 bg-card rounded-none"> {/* Removed rounded-lg shadow-lg hover:shadow-xl */}
               <Users className="h-16 w-16 mx-auto mb-6 text-accent" />
               <h3 className="font-headline text-2xl font-semibold mb-3 text-primary">Community Empowerment</h3>
               <p className="text-base text-muted-foreground">Uplifting communities through various social, economic, and educational initiatives.</p>
             </div>
-            <div className="p-8 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="p-8 bg-card rounded-none"> {/* Removed rounded-lg shadow-lg hover:shadow-xl */}
               <HeartHandshake className="h-16 w-16 mx-auto mb-6 text-accent" />
               <h3 className="font-headline text-2xl font-semibold mb-3 text-primary">Ethical Values</h3>
               <p className="text-base text-muted-foreground">Instilling integrity, compassion, and a strong sense of responsibility in all our endeavors.</p>

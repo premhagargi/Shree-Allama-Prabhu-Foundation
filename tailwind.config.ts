@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
@@ -68,9 +69,9 @@ export default {
         },
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        lg: '0rem', // Was var(--radius)
+        md: '0rem', // Was calc(var(--radius) - 2px)
+        sm: '0rem', // Was calc(var(--radius) - 4px)
       },
       keyframes: {
         'accordion-down': {

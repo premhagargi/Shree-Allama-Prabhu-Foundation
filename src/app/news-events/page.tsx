@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card className="flex flex-col overflow-hidden"> {/* Removed shadow-lg hover:shadow-xl */}
       <div className="relative w-full h-48">
         <Image
           src={item.imageUrl}
@@ -56,7 +56,7 @@ function NewsCard({ item }: { item: NewsItem }) {
 
 function EventCard({ item }: { item: EventItem }) {
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card className="flex flex-col overflow-hidden"> {/* Removed shadow-lg hover:shadow-xl */}
       <div className="relative w-full h-48">
         <Image
           src={item.imageUrl}

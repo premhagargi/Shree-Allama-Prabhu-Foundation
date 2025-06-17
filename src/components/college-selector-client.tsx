@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -25,7 +26,7 @@ export default function CollegeSelectorClient({ colleges, currentCollegeId }: Co
         Select College
       </Label>
       <Select value={currentCollegeId} onValueChange={handleCollegeChange}>
-        <SelectTrigger id="college-selector" className="w-full bg-card text-card-foreground border-border shadow-sm hover:bg-muted focus:ring-primary">
+        <SelectTrigger id="college-selector" className="w-full bg-card text-card-foreground border-border hover:bg-muted focus:ring-primary"> {/* Removed shadow-sm */}
           <SelectValue placeholder="Select a college" />
         </SelectTrigger>
         <SelectContent>

@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -179,7 +180,7 @@ const ChartTooltipContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+          "grid min-w-[8rem] items-start gap-1.5 border border-border/50 bg-background px-2.5 py-1.5 text-xs", // Removed rounded-lg, shadow-xl
           className
         )}
       >
@@ -208,7 +209,7 @@ const ChartTooltipContent = React.forwardRef<
                       !hideIndicator && (
                         <div
                           className={cn(
-                            "shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]",
+                            "shrink-0 rounded-none border-[--color-border] bg-[--color-bg]", // Changed rounded-[2px] to rounded-none
                             {
                               "h-2.5 w-2.5": indicator === "dot",
                               "w-1": indicator === "line",
@@ -300,7 +301,7 @@ const ChartLegendContent = React.forwardRef<
                 <itemConfig.icon />
               ) : (
                 <div
-                  className="h-2 w-2 shrink-0 rounded-[2px]"
+                  className="h-2 w-2 shrink-0 rounded-none" // Changed rounded-[2px] to rounded-none
                   style={{
                     backgroundColor: item.color,
                   }}

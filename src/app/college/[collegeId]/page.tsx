@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building, BookOpen, GraduationCap, Users, Mail, Phone, MapPin, Globe, Award, Microscope, UsersRound } from 'lucide-react'; // Added more icons
+import { Building, BookOpen, GraduationCap, Users, Mail, Phone, MapPin, Globe, Award, Microscope, UsersRound, ArrowRight } from 'lucide-react'; // Added more icons
 
 type Props = {
   params: { collegeId: string };
@@ -126,7 +126,7 @@ export default function CollegePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="space-y-10 pb-12"> {/* Added pb-12 for bottom spacing */}
-        <header className="relative overflow-hidden rounded-b-lg shadow-xl"> {/* Rounded bottom corners */}
+        <header className="relative overflow-hidden"> {/* Removed rounded-b-lg shadow-xl */}
           <div className="relative w-full h-72 md:h-96"> {/* Increased height slightly */}
             <Image
               src={college.imageUrl}
@@ -146,22 +146,22 @@ export default function CollegePage({ params }: Props) {
                     alt={`${college.name} Logo`}
                     width={88} // Slightly larger logo
                     height={88}
-                    className="mr-4 rounded-md bg-white p-1.5 shadow-md" // Increased padding
-                    data-ai-hint="college logo" // Added data-ai-hint
+                    className="mr-4 rounded-none bg-white p-1.5" // Increased padding, removed rounded-md shadow-md
+                    data-ai-hint="college logo"
                 />
                 )}
                 <div>
-                    <h1 className="font-headline text-3xl md:text-5xl font-extrabold mb-1 text-shadow"> {/* More emphasis on title */}
+                    <h1 className="font-headline text-3xl md:text-5xl font-extrabold mb-1"> {/* More emphasis on title, removed text-shadow */}
                     {college.name}
                     </h1>
-                    <p className="text-lg md:text-xl font-medium text-accent text-shadow-sm">{college.tagline}</p>
+                    <p className="text-lg md:text-xl font-medium text-accent">{college.tagline}</p> {/* Removed text-shadow-sm */}
                 </div>
             </div>
           </div>
         </header>
 
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 bg-secondary p-2 rounded-lg shadow-sm">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 bg-secondary p-2"> {/* Removed rounded-lg shadow-sm */}
             <TabsTrigger value="about" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-sm py-2.5">
               <Building className="h-4 w-4 mr-2" /> About Us
             </TabsTrigger>
@@ -184,7 +184,7 @@ export default function CollegePage({ params }: Props) {
 
           <div className="mt-8"> {/* Increased top margin for content */}
             <TabsContent value="about">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                     <Award className="h-6 w-6 mr-3 text-accent" /> About {college.shortName}
@@ -202,7 +202,7 @@ export default function CollegePage({ params }: Props) {
             </TabsContent>
 
             <TabsContent value="courses">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                     <BookOpen className="h-6 w-6 mr-3 text-accent" /> Academic Programs
@@ -214,7 +214,7 @@ export default function CollegePage({ params }: Props) {
                   </p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-foreground">
                     {college.courses.map((course, index) => (
-                      <li key={index} className="flex items-center p-3 bg-secondary/50 rounded-md hover:bg-secondary transition-colors">
+                      <li key={index} className="flex items-center p-3 bg-secondary/50 rounded-none hover:bg-secondary transition-colors"> {/* Changed rounded-md to rounded-none */}
                         <GraduationCap className="h-5 w-5 mr-3 text-primary shrink-0" />
                         <span>{course}</span>
                       </li>
@@ -227,7 +227,7 @@ export default function CollegePage({ params }: Props) {
             </TabsContent>
 
             <TabsContent value="admissions">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                      <GraduationCap className="h-6 w-6 mr-3 text-accent" /> Admission Process & Criteria
@@ -251,7 +251,7 @@ export default function CollegePage({ params }: Props) {
             </TabsContent>
 
             <TabsContent value="faculty">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                     <UsersRound className="h-6 w-6 mr-3 text-accent" /> Our Esteemed Faculty
@@ -267,7 +267,7 @@ export default function CollegePage({ params }: Props) {
             </TabsContent>
             
             <TabsContent value="research">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                     <Microscope className="h-6 w-6 mr-3 text-accent" /> Research & Innovation
@@ -290,14 +290,14 @@ export default function CollegePage({ params }: Props) {
             </TabsContent>
 
             <TabsContent value="contact">
-              <Card className="shadow-lg border-border">
+              <Card className="border-border"> {/* Removed shadow-lg */}
                 <CardHeader>
                   <CardTitle className="font-headline text-2xl md:text-3xl text-primary flex items-center">
                     <Mail className="h-6 w-6 mr-3 text-accent" /> Get in Touch
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6 text-foreground"> {/* Increased spacing */}
-                  <div className="flex items-start p-4 bg-secondary/30 rounded-lg">
+                  <div className="flex items-start p-4 bg-secondary/30 rounded-none"> {/* Changed rounded-lg to rounded-none */}
                     <MapPin className="h-6 w-6 mr-4 mt-1 text-primary shrink-0" />
                     <div>
                       <h4 className="font-semibold text-lg">Our Address:</h4>
@@ -305,14 +305,14 @@ export default function CollegePage({ params }: Props) {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-center p-4 bg-secondary/30 rounded-lg">
+                    <div className="flex items-center p-4 bg-secondary/30 rounded-none"> {/* Changed rounded-lg to rounded-none */}
                       <Phone className="h-6 w-6 mr-4 text-primary shrink-0" />
                       <div>
                         <h4 className="font-semibold text-lg">Phone:</h4>
                         <a href={`tel:${college.contact.phone}`} className="hover:text-accent transition-colors text-base">{college.contact.phone}</a>
                       </div>
                     </div>
-                    <div className="flex items-center p-4 bg-secondary/30 rounded-lg">
+                    <div className="flex items-center p-4 bg-secondary/30 rounded-none"> {/* Changed rounded-lg to rounded-none */}
                       <Mail className="h-6 w-6 mr-4 text-primary shrink-0" />
                       <div>
                         <h4 className="font-semibold text-lg">Email:</h4>
@@ -321,7 +321,7 @@ export default function CollegePage({ params }: Props) {
                     </div>
                   </div>
                   {college.contact.website && (
-                    <div className="flex items-center p-4 bg-secondary/30 rounded-lg">
+                    <div className="flex items-center p-4 bg-secondary/30 rounded-none"> {/* Changed rounded-lg to rounded-none */}
                       <Globe className="h-6 w-6 mr-4 text-primary shrink-0" />
                       <div>
                         <h4 className="font-semibold text-lg">College Website:</h4>
@@ -330,7 +330,7 @@ export default function CollegePage({ params }: Props) {
                     </div>
                   )}
                   {/* Placeholder for a map or further contact details */}
-                  <div className="mt-4 p-4 bg-secondary/30 rounded-lg">
+                  <div className="mt-4 p-4 bg-secondary/30 rounded-none"> {/* Changed rounded-lg to rounded-none */}
                     <h4 className="font-semibold text-lg mb-2">Office Hours:</h4>
                     <p className="text-base">Monday - Friday: 9:00 AM - 5:00 PM</p>
                     <p className="text-base">Saturday: 9:00 AM - 1:00 PM (Administrative Office)</p>
