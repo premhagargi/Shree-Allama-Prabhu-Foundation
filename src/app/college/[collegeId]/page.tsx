@@ -119,7 +119,7 @@ export default function CollegePage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-[50px]">
       <div className="h-[calc(var(--header-height,5rem)+2.25rem)]" /> {/* Spacer for header */}
       {/* College Card Section */}
       <div className="relative">
