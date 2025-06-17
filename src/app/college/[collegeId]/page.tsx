@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Building, BookOpen, GraduationCap, Users, Mail, Phone, MapPin, Globe, Award, Microscope, UsersRound, ArrowRight } from 'lucide-react'; // Added more icons
-
+import CollegeCard from '@/components/college-card';
 type Props = {
   params: { collegeId: string };
 };
