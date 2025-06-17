@@ -1,4 +1,7 @@
+
 import type { Metadata } from 'next';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/header';
@@ -14,11 +17,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Shree Allama Prabhu Foundation',
     description: 'Empowering communities through education and service.',
-    url: 'https://shreeallamaprabhufoundation.org', // Replace with actual domain
+    url: 'https://shreeallamaprabhufoundation.org',
     siteName: 'Shree Allama Prabhu Foundation',
     images: [
       {
-        url: 'https://shreeallamaprabhufoundation.org/og-image.png', // Replace with actual OG image URL
+        url: 'https://shreeallamaprabhufoundation.org/og-image.png',
         width: 1200,
         height: 630,
       },
@@ -30,9 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Shree Allama Prabhu Foundation',
     description: 'Empowering communities through education and service.',
-    // site: '@yourtwitterhandle', // Optional: if foundation has a Twitter account
-    // creator: '@creatorhandle', // Optional
-    images: ['https://shreeallamaprabhufoundation.org/twitter-image.png'], // Replace
+    images: ['https://shreeallamaprabhufoundation.org/twitter-image.png'],
   },
   robots: {
     index: true,
@@ -47,20 +48,20 @@ export const metadata: Metadata = {
   },
 };
 
+// GeistSans and GeistMono are imported as objects directly.
+// Their '.variable' property provides the CSS variable name.
+// Tailwind is configured to use these variable names.
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} scroll-smooth`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex flex-col min-h-screen">
+      <body className="font-sans antialiased flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
           {children}
