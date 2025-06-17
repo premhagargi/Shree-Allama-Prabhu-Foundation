@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import type { College } from '@/app/college/college-data';
@@ -9,8 +10,12 @@ interface CollegeCardProps {
 
 export default function CollegeCard({ college }: CollegeCardProps) {
   return (
-    <Link href={`/college/${college.id}`} className="block group" aria-label={`Learn more about ${college.name}`}>
-      <div className="relative w-full h-72 sm:h-80 md:h-96 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <Link 
+      href={`/college/${college.id}`} 
+      className="block group flex-1 min-h-0 w-full" // Added flex-1 and min-h-0, removed fixed height classes
+      aria-label={`Learn more about ${college.name}`}
+    >
+      <div className="relative w-full h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"> {/* Changed to h-full */}
         <Image
           src={college.imageUrl}
           alt={`Image of ${college.name}`}
@@ -21,11 +26,11 @@ export default function CollegeCard({ college }: CollegeCardProps) {
           priority // Consider adding priority for LCP images if these are high on the page
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-6 text-white w-full flex justify-between items-end">
-          <div>
+        <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end"> {/* Increased padding slightly */}
+          <div className="max-w-[calc(100%-3rem)]"> {/* Ensure text doesn't overlap arrow */}
             <div className="flex items-center mb-2">
               <School className="h-6 w-6 mr-3 text-shadow flex-shrink-0" />
-              <h2 className="font-headline text-2xl md:text-3xl leading-tight text-shadow">
+              <h2 className="font-headline text-2xl md:text-3xl leading-tight text-shadow line-clamp-2">
                 {college.name}
               </h2>
             </div>

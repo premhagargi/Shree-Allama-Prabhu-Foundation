@@ -1,15 +1,33 @@
+
+'use client'; // Required for useState and useEffect
+
+import React, { useState, useEffect } from 'react';
 import CollegeCard from '@/components/college-card';
 import { colleges } from '@/app/college/college-data';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { Landmark, Users, BookOpen, HeartHandshake } from 'lucide-react';
 
 export default function HomePage() {
+  const [showHeroContent, setShowHeroContent] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHeroContent(false);
+    }, 3000); // Content starts fading/changing after 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-background min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary to-blue-700 text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="bg-background">
+      {/* Animated Hero / College Cards Section */}
+      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-primary to-blue-700 text-primary-foreground overflow-hidden">
+        {/* Hero Text Content - Fades Out */}
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center text-center p-4 transition-all duration-1000 ease-in-out ${
+            showHeroContent ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95 pointer-events-none'
+          }`}
+        >
           <Landmark className="h-24 w-24 mx-auto mb-6 text-accent" />
           <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             Shree Allama Prabhu Foundation
@@ -17,11 +35,25 @@ export default function HomePage() {
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10">
             Dedicated to fostering education, empowering communities, and building a brighter future through our esteemed institutions and initiatives.
           </p>
-          <Button size="lg" variant="secondary" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 px-8 rounded-md shadow-lg transition-transform hover:scale-105">
-            <Link href="#colleges">
-              Explore Our Colleges
-            </Link>
+          <Button 
+            size="lg" 
+            variant="secondary" 
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 px-8 rounded-md shadow-lg transition-transform hover:scale-105"
+          >
+            Explore Our Colleges
           </Button>
+        </div>
+
+        {/* College Cards Stack - Fades In */}
+        <div
+          className={`flex-grow flex flex-col w-full transition-all duration-1000 ease-in-out ${
+            !showHeroContent ? 'opacity-100 scale-100 delay-700' : 'opacity-0 scale-105 pointer-events-none'
+          }`}
+        >
+          {/* Always render cards for flexbox calculations, visibility controlled by opacity and pointer-events */}
+          {colleges.map((college) => (
+            <CollegeCard key={college.id} college={college} />
+          ))}
         </div>
       </section>
 
@@ -50,20 +82,6 @@ export default function HomePage() {
               <h3 className="font-headline text-xl font-semibold mb-2 text-primary">Ethical Values</h3>
               <p className="text-sm text-muted-foreground">Instilling integrity, compassion, and responsibility in our students.</p>
             </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Colleges Section */}
-      <section id="colleges" className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-center mb-12 text-primary">
-            Our Institutions
-          </h2>
-          <div className="flex flex-col space-y-8">
-            {colleges.map((college) => (
-              <CollegeCard key={college.id} college={college} />
-            ))}
           </div>
         </div>
       </section>
