@@ -1,103 +1,68 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CollegeCard from '@/components/college-card';
 import { colleges } from '@/app/college/college-data';
 import { Button } from '@/components/ui/button';
-import { Landmark, Users, BookOpen, HeartHandshake, ArrowRight, Newspaper, CalendarDays } from 'lucide-react';
+import { Users, BookOpen, HeartHandshake, ArrowRight, Newspaper } from 'lucide-react';
 import { newsItems, eventItems, type NewsItem, type EventItem } from './news-events/news-data'; // Import news/events data
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { CalendarDays } from 'lucide-react';
 
 
 // Small card for news/event previews on homepage
 function PreviewCard({ item, type }: { item: NewsItem | EventItem; type: 'news' | 'event' }) {
-  const link = type === 'news' ? `/news-events#news-${item.id}` : `/news-events#event-${item.id}`; // Link to section on news page
+  const newsPageLink = `/news-events#${type === 'news' ? 'news-item' : 'event-item'}-${item.id}`;
   return (
     <Card className="shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
-      <div className="relative w-full h-40">
-        <Image
-          src={item.imageUrl}
-          alt={item.title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-t-lg"
-          data-ai-hint={item.dataAiHint}
-        />
-      </div>
-      <CardHeader className="pb-2">
-        <CardTitle className="font-headline text-lg text-primary line-clamp-2">{item.title}</CardTitle>
-        <CardDescription className="text-xs text-muted-foreground pt-1 flex items-center">
-          <CalendarDays className="h-3 w-3 mr-1.5" /> {item.date}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow pt-0">
-        <p className="text-sm text-foreground line-clamp-3">{item.summary}</p>
-      </CardContent>
-      <div className="p-4 pt-0">
-        <Button variant="link" asChild className="text-primary hover:text-accent p-0 text-sm">
-          <Link href={link}>
-            {type === 'news' ? 'Read More' : 'View Details'} <ArrowRight className="h-4 w-4 ml-1" />
-          </Link>
-        </Button>
-      </div>
+      <Link href={newsPageLink} className="block h-full flex flex-col">
+        <div className="relative w-full h-40">
+          <Image
+            src={item.imageUrl}
+            alt={item.title}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-t-lg"
+            data-ai-hint={item.dataAiHint}
+          />
+        </div>
+        <CardHeader className="pb-2">
+          <CardTitle className="font-headline text-lg text-primary line-clamp-2">{item.title}</CardTitle>
+          <CardDescription className="text-xs text-muted-foreground pt-1 flex items-center">
+            <CalendarDays className="h-3 w-3 mr-1.5" /> {item.date}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex-grow pt-0">
+          <p className="text-sm text-foreground line-clamp-3">{item.summary}</p>
+        </CardContent>
+        <div className="p-4 pt-0 mt-auto">
+           <Button variant="link" asChild className="text-primary hover:text-accent p-0 text-sm">
+            {/* The parent Link handles navigation, this is for visual consistency */}
+            <span>
+              {type === 'news' ? 'Read More' : 'View Details'} <ArrowRight className="h-4 w-4 ml-1" />
+            </span>
+          </Button>
+        </div>
+      </Link>
     </Card>
   );
 }
 
 
 export default function HomePage() {
-  const [showHeroContent, setShowHeroContent] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHeroContent(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const latestNews = newsItems.slice(0, 2); // Get first 2 news items
-  const upcomingEvents = eventItems.slice(0, 1); // Get first 1 event item
-
+  const latestNews = newsItems.slice(0, 2);
+  const upcomingEvents = eventItems.slice(0, 1);
 
   return (
     <div className="bg-background">
-      {/* Animated Hero / College Cards Section */}
-      <section className="relative min-h-screen flex flex-col bg-gradient-to-br from-primary to-yellow-600 text-primary-foreground overflow-hidden">
-        <div
-          className={`absolute inset-0 flex flex-col items-center justify-center text-center p-4 transition-all duration-1000 ease-in-out ${
-            showHeroContent ? 'opacity-100 z-10 scale-100' : 'opacity-0 -z-10 scale-95 pointer-events-none'
-          }`}
-        >
-          <Landmark className="h-24 w-24 mx-auto mb-6 text-accent" />
-          <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Shree Allama Prabhu Foundation
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10">
-            Dedicated to fostering education, empowering communities, and building a brighter future through our esteemed institutions and initiatives.
-          </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 px-8 rounded-md shadow-lg transition-transform hover:scale-105"
-            onClick={() => setShowHeroContent(false)} // Added onClick to also trigger fade
-          >
-            Explore Our Colleges
-          </Button>
-        </div>
-
-        <div
-          className={`flex-grow flex flex-col w-full transition-all duration-1000 ease-in-out ${
-            !showHeroContent ? 'opacity-100 scale-100 z-20 delay-700' : 'opacity-0 scale-100 -z-10 pointer-events-none'
-          }`}
-        >
-          {colleges.map((college) => (
-            <CollegeCard key={college.id} college={college} />
-          ))}
-        </div>
+      {/* Side-by-side College Sections - Full Viewport Height minus Header */}
+      <section className="flex flex-col md:flex-row h-[calc(100vh-var(--header-height,5rem))]">
+        {colleges.map((college) => (
+          <CollegeCard key={college.id} college={college} />
+        ))}
       </section>
 
       {/* Introduction/About Foundation Section */}

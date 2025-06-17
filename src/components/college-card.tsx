@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { College } from '@/app/college/college-data';
-import { ArrowRight, School } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface CollegeCardProps {
   college: College;
@@ -10,35 +10,34 @@ interface CollegeCardProps {
 
 export default function CollegeCard({ college }: CollegeCardProps) {
   return (
-    <Link 
-      href={`/college/${college.id}`} 
-      className="block group flex-1 min-h-0 w-full" // Added flex-1 and min-h-0, removed fixed height classes
+    <Link
+      href={`/college/${college.id}`}
+      className="group relative overflow-hidden flex flex-col justify-end text-white flex-1"
       aria-label={`Learn more about ${college.name}`}
     >
-      <div className="relative w-full h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"> {/* Changed to h-full */}
-        <Image
-          src={college.imageUrl}
-          alt={`Image of ${college.name}`}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-500 ease-in-out group-hover:scale-105"
-          data-ai-hint={college.dataAiHint}
-          priority // Consider adding priority for LCP images if these are high on the page
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end"> {/* Increased padding slightly */}
-          <div className="max-w-[calc(100%-3rem)]"> {/* Ensure text doesn't overlap arrow */}
-            <div className="flex items-center mb-2">
-              <School className="h-6 w-6 mr-3 text-shadow flex-shrink-0" />
-              <h2 className="font-headline text-2xl md:text-3xl leading-tight text-shadow line-clamp-2">
-                {college.name}
-              </h2>
-            </div>
-            <p className="text-base text-gray-200 text-shadow-sm line-clamp-2">
-              {college.tagline}
-            </p>
-          </div>
-          <ArrowRight className="h-8 w-8 text-white transition-transform duration-300 ease-in-out group-hover:translate-x-1 shrink-0" />
+      <Image
+        src={college.imageUrl}
+        alt={`Image of ${college.name}`}
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-105 -z-10"
+        data-ai-hint={college.dataAiHint}
+        priority 
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent -z-10" />
+
+      <div className="relative p-6 md:p-8 lg:p-10 z-10 mr-auto text-left w-full"> {/* Ensure content takes width, text-left applied */}
+        <span className="block text-sm font-semibold uppercase tracking-wider mb-2 text-shadow-sm">
+          {college.heroCategory || college.shortName}
+        </span>
+        <h2 className="font-headline text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold leading-tight text-shadow mb-6 line-clamp-3">
+          {college.heroTitle || college.name}
+        </h2>
+        <div
+          // This div is styled like a button but the parent Link handles navigation
+          className="inline-flex items-center justify-center px-5 py-2.5 border-2 border-white text-white rounded-md text-sm font-semibold hover:bg-white hover:text-primary transition-colors duration-300 group-hover:bg-white group-hover:text-primary cursor-pointer"
+        >
+          Explore {college.shortName} <ArrowRight className="h-4 w-4 ml-2" />
         </div>
       </div>
     </Link>
