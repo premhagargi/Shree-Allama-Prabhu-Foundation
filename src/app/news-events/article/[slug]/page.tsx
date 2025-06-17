@@ -21,7 +21,7 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 mt-[50px]">
         <h1 className="text-2xl font-bold text-primary">Article not found</h1>
         <p className="mt-4">The article you're looking for doesn't exist.</p>
         <Button asChild className="mt-6">
@@ -32,7 +32,7 @@ export default function ArticlePage() {
   }
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-background min-h-screen mt-[15px]">
       <div className="container mx-auto px-4 py-16">
         {/* Back Button */}
         <Button variant="ghost" asChild className="mb-8">

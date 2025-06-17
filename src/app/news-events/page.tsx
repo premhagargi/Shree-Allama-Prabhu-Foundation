@@ -95,7 +95,7 @@ function EventCard({ item }: { item: EventItem }) {
 
 export default function NewsAndEventsPage() {
   return (
-    <div className="bg-background min-h-[calc(100vh-var(--header-height,5rem))]">
+    <div className="bg-background min-h-[calc(100vh-var(--header-height,5rem))] mt-[100px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-12 text-center">
           <h1 className="font-headline text-4xl sm:text-5xl font-bold text-primary mb-4">
