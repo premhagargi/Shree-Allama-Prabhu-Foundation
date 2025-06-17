@@ -1,23 +1,23 @@
 
 import Link from 'next/link';
-import { Landmark, Newspaper } from 'lucide-react'; // Added Newspaper for News & Events
+import { Landmark, Newspaper } from 'lucide-react';
 
 export default function Header() {
   return (
-    <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
+    <header className="shadow-md sticky top-0 z-50"> {/* Removed bg-primary */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20"> {/* Increased height for a bit more presence */}
+        <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-3 group">
-            <Landmark className="h-10 w-10 text-accent group-hover:text-accent-foreground transition-colors duration-300" />
-            <span className="font-headline text-xl sm:text-2xl md:text-3xl font-bold tracking-tight group-hover:text-gray-200 transition-colors duration-300">
+            <Landmark className="h-10 w-10 text-white group-hover:text-gray-300 transition-colors duration-300 text-shadow-sm" /> {/* Changed text-accent to text-white */}
+            <span className="font-headline text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white group-hover:text-gray-300 transition-colors duration-300 text-shadow-sm"> {/* Changed to text-white */}
               Shree Allama Prabhu Foundation
             </span>
           </Link>
           <nav className="flex space-x-4 md:space-x-6 items-center">
-            <Link href="/" className="font-medium hover:text-accent transition-colors duration-300 px-3 py-2 rounded-md text-sm">
+            <Link href="/" className="font-medium text-white hover:text-accent transition-colors duration-300 px-3 py-2 rounded-md text-sm text-shadow-sm"> {/* Changed to text-white */}
               Home
             </Link>
-            <Link href="/news-events" className="font-medium hover:text-accent transition-colors duration-300 px-3 py-2 rounded-md text-sm flex items-center">
+            <Link href="/news-events" className="font-medium text-white hover:text-accent transition-colors duration-300 px-3 py-2 rounded-md text-sm flex items-center text-shadow-sm"> {/* Changed to text-white */}
               <Newspaper className="h-4 w-4 mr-1 md:mr-2" /> News & Events
             </Link>
             {/* Future navigation links can be added here */}

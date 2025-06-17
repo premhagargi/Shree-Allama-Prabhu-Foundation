@@ -67,7 +67,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased flex flex-col min-h-screen bg-background text-foreground">
         <Header />
-        <main className="flex-grow" style={{paddingTop: 'var(--header-height, 5rem)'}}> {/* Adjust main content to account for sticky header */}
+        <main className="flex-grow"> {/* Removed style={{paddingTop: 'var(--header-height, 5rem)'}} */}
           {children}
         </main>
         <Footer />

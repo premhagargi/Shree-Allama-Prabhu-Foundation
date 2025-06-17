@@ -6,7 +6,7 @@ import CollegeCard from '@/components/college-card';
 import { colleges } from '@/app/college/college-data';
 import { Button } from '@/components/ui/button';
 import { Users, BookOpen, HeartHandshake, ArrowRight, Newspaper } from 'lucide-react';
-import { newsItems, eventItems, type NewsItem, type EventItem } from './news-events/news-data'; // Import news/events data
+import { newsItems, eventItems, type NewsItem, type EventItem } from './news-events/news-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -58,8 +58,8 @@ export default function HomePage() {
 
   return (
     <div className="bg-background">
-      {/* Side-by-side College Sections - Full Viewport Height minus Header */}
-      <section className="flex flex-col md:flex-row h-[calc(100vh-var(--header-height,5rem))]">
+      {/* Side-by-side College Sections - Full Viewport Height */}
+      <section className="flex flex-col md:flex-row h-screen"> {/* Changed from h-[calc(100vh-var(--header-height,5rem))] to h-screen */}
         {colleges.map((college) => (
           <CollegeCard key={college.id} college={college} />
         ))}
