@@ -119,8 +119,8 @@ export default function CollegePage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 mt-[50px]">
-      <div className="h-[calc(var(--header-height,5rem)+2.25rem)]" /> {/* Spacer for header */}
+    <div className="min-h-screen bg-gray-50 mt-[100pxz]">
+      <div className="" /> {/* Spacer for header */}
       {/* College Card Section */}
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#8B0000] to-[#A52A2A] opacity-90" />

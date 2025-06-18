@@ -14,7 +14,7 @@ export default function CollegeLayout({
   const currentCollegeId = params.collegeId;
 
   return (
-    <div className="bg-background min-h-[calc(100vh-var(--header-height,5rem))]">
+    <div className="bg-background mt-10 min-h-[calc(100vh-var(--header-height,5rem))]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <Button variant="outline" asChild className="self-start md:self-center">
